@@ -1,20 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import ProductCard from './ProductCard';
+import React, { useContext } from "react";
+import ProductCard from "./ProductCard";
+import ProductContext from "../context/products";
 
-const ProductList = ({productsList,onDeleteProducts,onEditProduct}) => {
+const ProductList = () => {
+  const { products } = useContext(ProductContext);
   return (
-    <div className='cards'>
-    {productsList.map(product => {
-      return <ProductCard
-      key={product.id}
-      product = {product}
-      onDeleteProducts = {onDeleteProducts}
-      onEditProduct = {onEditProduct}
-      />
-    })}
-  </div>
-  )
-}
+    <div className="cards">
+      {products.map((product) => {
+        return <ProductCard key={product.id} product={product} />;
+      })}
+    </div>
+  );
+};
 
-export default ProductList
+export default ProductList;
